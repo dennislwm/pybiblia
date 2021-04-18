@@ -1,4 +1,4 @@
-from biblia import clickMain
+from cli import clickMain
 from click.testing import CliRunner
 
 strBible = 'asv'

@@ -60,8 +60,7 @@ class Biblia(object):
 
     #---------------------------
     # Load environment variables
-    if 'BIBLIA_API_KEY' in os.environ:
-      self.API_KEY = os.environ['BIBLIA_API_KEY']
+    self.API_KEY = os.getenv('BIBLIA_API_KEY')
 
     #--------------------------------------
     # A JSON file supercedes os environment
@@ -130,7 +129,6 @@ def clickMain(ctx, out):
 @click.option('--bible', '-b', default='asv', 
   type=click.Choice([
     'asv',
-    'esv',
     'kjv',
     'leb',
     'rsvce',
@@ -154,7 +152,6 @@ def content(objBiblia, bible, passage):
 @click.option('--bible', '-b', default='asv', 
   type=click.Choice([
     'asv',
-    'esv',
     'kjv',
     'leb',
     'ylt'
@@ -177,7 +174,6 @@ def search(objBiblia, bible, query):
 @click.option('--bible', '-b', default='asv', 
   type=click.Choice([
     'asv',
-    'esv',
     'kjv',
     'leb',
     'ylt'
@@ -199,7 +195,6 @@ def toc(objBiblia, bible):
 @click.option('--bible', '-b', default='asv', 
   type=click.Choice([
     'asv',
-    'esv',
     'kjv',
     'leb',
     'rsvce',

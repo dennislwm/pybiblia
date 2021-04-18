@@ -21,7 +21,9 @@ class Pybiblia():
   def __init__(self, strApiKey):
     #----------------------------
     # initialize class _CONSTANTS
-    assert(strApiKey)
+    if not strApiKey:
+      raise ValueError("No API key found. Go to https://bibliaapi.com")
+    
     self._init_meta()
 
     self.BIBLIA_API_KEY = strApiKey
@@ -105,7 +107,8 @@ class Pybiblia():
       #print(str(a.text))
     #-----------------------------------------------
     # 2/3 From the anchor tag use Regex find passage
-    objRegex = re.search('ref.ly/[A-Z,a-z]+[1-9]+.[1-9]+;', str(refs[2]))
+    objRegex = re.search('ref.ly/[A-Z,a-z]+[1-9]+.[1-9,-]+;', str(refs[2]))
+
     strRegex = objRegex.group(0)
     #--------------------------------
     # 3/3 Split string to get passage
@@ -130,7 +133,7 @@ class Pybiblia():
       | _strMETACLASS, _strMETAVERSION, _strMETAFILE used to save() and load() members
       """
       self._strMETACLASS = str(self.__class__).split('.')[1][:-2]
-      self._strMETAVERSION = "0.1"
+      self._strMETAVERSION = "0.2.0"
       """
       | Filename "_Class_Version_"
       """
