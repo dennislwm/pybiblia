@@ -1,4 +1,4 @@
-.PHONY: default install test
+.PHONY: default install test verbose
 
 default: test
 
@@ -7,3 +7,6 @@ install:
 
 test:
 	PYTHONPATH=./src/pybiblia pytest
+
+verbose:
+	PYTHONPATH=./src/pybiblia pytest -v -s

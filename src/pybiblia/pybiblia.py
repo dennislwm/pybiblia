@@ -107,14 +107,15 @@ class Pybiblia():
       #print(str(a.text))
     #-----------------------------------------------
     # 2/3 From the anchor tag use Regex find passage
-    objRegex = re.search('ref.ly/[A-Z,a-z]+[1-9]+.[1-9,-]+;', str(refs[2]))
+    objRegex = re.search('ref.ly/[A-Z,a-z,1-9]+[1-9]+.[1-9,-]+;', str(refs[2]))
 
-    strRegex = objRegex.group(0)
-    #--------------------------------
-    # 3/3 Split string to get passage
-    passage = strRegex.split('/')[1]
-    strRet = passage.split(';')[0]
-    return strRet
+    if objRegex:
+      strRegex = objRegex.group(0)
+      #--------------------------------
+      # 3/3 Split string to get passage
+      passage = strRegex.split('/')[1]
+      strRet = passage.split(';')[0]
+      return strRet
 
   """--------+---------+---------+---------+---------+---------+---------+---------+---------|
   |                                 C L A S S   M E T H O D S                                |
